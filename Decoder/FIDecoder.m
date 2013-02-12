@@ -9,7 +9,8 @@
     OSStatus errcode = noErr;
     UInt32 propertySize;
     AudioFileID fileId = 0;
-    error = error ? error : &(NSError*){ nil };
+    __autoreleasing NSError *localError = nil;
+    error = error ? error : &localError;
 
     if (!path) {
         *error = [FIError

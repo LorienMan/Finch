@@ -17,7 +17,8 @@
 - (id) initWithSample: (FISample*) sample error: (NSError**) error
 {
     self = [super init];
-    error = error ? error : &(NSError*){ nil };
+    __autoreleasing NSError *localError = nil;
+    error = error ? error : &localError;
 
     if (!sample) {
         return nil;
