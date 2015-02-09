@@ -68,7 +68,7 @@
 
     // Pass sound data to OpenAL
     CLEAR_ERROR_FLAG;
-    alBufferData(buffer, [sample openALFormat], [[sample data] bytes], [[sample data] length], [sample sampleRate]);
+    alBufferData(buffer, [sample openALFormat], [[sample data] bytes], (ALsizei) [[sample data] length], (ALsizei) [sample sampleRate]);
     if (alGetError()) {
         *error = [FIError
             errorWithMessage:@"Failed to fill OpenAL buffers."
